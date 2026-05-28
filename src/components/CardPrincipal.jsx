@@ -1,68 +1,96 @@
 import "../CSS/cardPrincipal.css";
 
 export default function CardPrincipal({
-    jogo,
-    proximoJogo,
-    voltarJogo
+  jogo,
+  proximoJogo,
+  voltarJogo
 }) {
 
-    return (
-        <div className="featured-container">
+  const imagens =
+    jogo.imagens && jogo.imagens.length > 0
+      ? jogo.imagens
+      : [
+          { url: jogo.capaUrl },
+          { url: jogo.capaUrl },
+          { url: jogo.capaUrl },
+          { url: jogo.capaUrl }
+        ];
 
-            <button
-                className="back-preview"
-                onClick={voltarJogo}
-            >
-                ❮
-            </button>
+  return (
+    <div className="featured-container">
 
-            <div className="featured-card">
+      <button
+        className="back-preview"
+        onClick={voltarJogo}
+      >
+        ❮
+      </button>
 
-                {/* IMAGEM PRINCIPAL */}
-                <div className="featured-left">
+      <div className="featured-card">
 
-                    <img
-                        src={
-                            jogo.capaUrl ||
-                            "https://placehold.co/600x400?text=Sem+Capa"
-                        }
-                        alt={jogo.titulo}
-                    />
+        <div className="featured-left">
+          <img
+            src={
+              jogo.capaUrl ||
+              "https://placehold.co/1200x600/111827/ffffff?text=Sem+Imagem"
+            }
+            alt={jogo.titulo}
+          />
+        </div>
 
-                </div>
+        <div className="featured-right">
 
-                {/* INFO */}
-                <div className="featured-right">
+          <h1>{jogo.titulo}</h1>
 
-                    <h1>{jogo.titulo}</h1>
+          <div className="mini-images">
 
-                    <p>{jogo.descricao}</p>
+            {imagens.slice(0, 4).map((img, index) => (
 
-                    <h2>{jogo.desenvolvedora}</h2>
+              <img
+                key={index}
+                src={
+                  img.url ||
+                  jogo.capaUrl ||
+                  "https://placehold.co/300x200"
+                }
+                alt=""
+              />
 
-                    <span className="tag">
+            ))}
 
-                        {jogo.generos.length > 0
-                            ? jogo.generos[0].nome
-                            : "Sem gênero"}
+          </div>
 
-                    </span>
+          <div className="price-area">
 
-                    <h3>
-                        R$ {jogo.preco}
-                    </h3>
+            <span className="popular-tag">
+              Popular
+            </span>
 
-                </div>
+            <div className="price-box-main">
+
+              <span className="price-label">
+                Preço
+              </span>
+
+              <strong>
+                R$ {jogo.preco}
+              </strong>
 
             </div>
 
-            <button
-                className="next-preview"
-                onClick={proximoJogo}
-            >
-                ❯
-            </button>
+          </div>
 
         </div>
-    );
+
+      </div>
+
+      <button
+        className="next-preview"
+        onClick={proximoJogo}
+      >
+        ❯
+      </button>
+
+    </div>
+  );
 }
