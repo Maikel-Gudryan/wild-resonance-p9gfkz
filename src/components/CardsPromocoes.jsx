@@ -75,6 +75,54 @@ export default function CardsPromocoes() {
               alt=""
             />
 
+            <div className="hover-details">
+
+              <h3>
+                {jogos[indexAtual]?.titulo}
+              </h3>
+
+              <p className="release-date">
+                Lançado recentemente
+              </p>
+
+              <div className="hover-images">
+
+                <img
+                  src={
+                    jogos[indexAtual]?.capaUrl ||
+                    "https://placehold.co/600x400"
+                  }
+                  alt=""
+                />
+
+                <img
+                  src={
+                    jogos[indexAtual]?.capaUrl ||
+                    "https://placehold.co/600x400"
+                  }
+                  alt=""
+                />
+
+              </div>
+
+              <p className="review-text">
+                Muito positivas
+              </p>
+
+              <div className="hover-tags">
+
+                <span>
+                  {jogos[indexAtual]?.generos?.[0]?.nome || "Ação"}
+                </span>
+
+                <span>Online</span>
+
+                <span>Popular</span>
+
+              </div>
+
+            </div>
+
             <div className="game-info">
 
               <h3>
@@ -109,6 +157,7 @@ export default function CardsPromocoes() {
 
           </div>
 
+          ```jsx
           {/* CARD 2 */}
           <div className="game-card">
 
@@ -152,7 +201,57 @@ export default function CardsPromocoes() {
 
             </div>
 
+            <div className="hover-details">
+
+              <h3>
+                {jogos[indexAtual + 1]?.titulo}
+              </h3>
+
+              <p className="release-date">
+                Lançado recentemente
+              </p>
+
+              <div className="hover-images">
+
+                <img
+                  src={
+                    jogos[indexAtual + 1]?.capaUrl ||
+                    "https://placehold.co/300x200"
+                  }
+                  alt=""
+                />
+
+                <img
+                  src={
+                    jogos[indexAtual + 1]?.capaUrl ||
+                    "https://placehold.co/300x200"
+                  }
+                  alt=""
+                />
+
+              </div>
+
+              <p className="review-text">
+                Muito positivas
+              </p>
+
+              <div className="hover-tags">
+
+                <span>
+                  {jogos[indexAtual + 1]?.generos?.[0]?.nome || "Ação"}
+                </span>
+
+                <span>Open World</span>
+
+                <span>Multiplayer</span>
+
+              </div>
+
+            </div>
+
           </div>
+          ```
+
 
           {/* COLUNA DIREITA */}
           <div className="side-column">

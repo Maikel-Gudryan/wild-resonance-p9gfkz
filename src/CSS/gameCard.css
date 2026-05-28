@@ -1,0 +1,42 @@
+import "../CSS/gameCard.css";
+
+export default function GameCard({ jogo }) {
+  return (
+    <div className="game-card">
+
+      <img
+        className="game-image"
+        src={
+          jogo.capaUrl ||
+          "https://placehold.co/600x400?text=Sem+Capa"
+        }
+        alt={jogo.titulo}
+      />
+
+      <div className="game-hover">
+
+        <h2>{jogo.titulo}</h2>
+
+        <p>{jogo.descricao}</p>
+
+        <div className="game-tags">
+
+          {jogo.generos.map((genero) => (
+            <span key={genero.id}>
+              {genero.nome}
+            </span>
+          ))}
+
+        </div>
+
+        <h3>R$ {jogo.preco}</h3>
+
+        <button>
+          Comprar
+        </button>
+
+      </div>
+
+    </div>
+  );
+}
