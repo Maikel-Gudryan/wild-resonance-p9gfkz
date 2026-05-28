@@ -157,7 +157,7 @@ export default function CardsPromocoes() {
 
           </div>
 
-          ```jsx
+
           {/* CARD 2 */}
           <div className="game-card">
 
@@ -250,7 +250,7 @@ export default function CardsPromocoes() {
             </div>
 
           </div>
-          ```
+
 
 
           {/* COLUNA DIREITA */}
@@ -267,6 +267,38 @@ export default function CardsPromocoes() {
                 alt=""
               />
 
+              {/* HOVER */}
+              <div className="mini-hover-details">
+
+                <h4>
+                  {jogos[indexAtual + 2]?.titulo}
+                </h4>
+
+                <p className="mini-genre">
+                  {jogos[indexAtual + 2]?.generos?.[0]?.nome || "Ação"}
+                </p>
+
+                <div className="mini-hover-imgs">
+
+                  <img
+                    src={jogos[indexAtual + 2]?.capaUrl || "https://placehold.co/200x120"}
+                    alt=""
+                  />
+
+                  <img
+                    src={jogos[indexAtual + 2]?.capaUrl || "https://placehold.co/200x120"}
+                    alt=""
+                  />
+
+                </div>
+
+                <span className="mini-review">
+                  Muito positivas
+                </span>
+
+              </div>
+
+              {/* INFO NORMAL */}
               <div className="mini-info">
 
                 <span>
@@ -287,6 +319,7 @@ export default function CardsPromocoes() {
 
             </div>
 
+
             {/* MINI CARD 2 */}
             <div className="mini-card">
 
@@ -298,6 +331,38 @@ export default function CardsPromocoes() {
                 alt=""
               />
 
+              {/* HOVER */}
+              <div className="mini-hover-details">
+
+                <h4>
+                  {jogos[indexAtual + 3]?.titulo}
+                </h4>
+
+                <p className="mini-genre">
+                  {jogos[indexAtual + 3]?.generos?.[0]?.nome || "Ação"}
+                </p>
+
+                <div className="mini-hover-imgs">
+
+                  <img
+                    src={jogos[indexAtual + 3]?.capaUrl || "https://placehold.co/200x120"}
+                    alt=""
+                  />
+
+                  <img
+                    src={jogos[indexAtual + 3]?.capaUrl || "https://placehold.co/200x120"}
+                    alt=""
+                  />
+
+                </div>
+
+                <span className="mini-review">
+                  Muito positivas
+                </span>
+
+              </div>
+
+              {/* INFO NORMAL */}
               <div className="mini-info">
 
                 <span>
