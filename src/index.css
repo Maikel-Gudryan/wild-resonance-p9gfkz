@@ -1,0 +1,82 @@
+:root {
+  --bg-primary: #050816;
+  --bg-secondary: #0b1020;
+  --bg-card: #111827;
+  --bg-card-hover: #161f35;
+
+  --neon-blue: #00e5ff;
+  --neon-cyan: #00bcd4;
+  --neon-pink: #ff00c8;
+  --neon-purple: #7c3aed;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+
+  --border-glow: rgba(0, 229, 255, 0.25);
+  --shadow-glow: rgba(0, 229, 255, 0.2);
+
+  --gradient-main: linear-gradient(
+    135deg,
+    #050816 0%,
+    #0b1020 35%,
+    #111827 100%
+  );
+
+  --gradient-card: linear-gradient(
+    180deg,
+    rgba(17, 24, 39, 0.95) 0%,
+    rgba(9, 13, 25, 1) 100%
+  );
+
+  --gradient-neon: linear-gradient(
+    90deg,
+    #00e5ff,
+    #7c3aed,
+    #ff00c8
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gradient-main);
+
+  color: var(--text-primary);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    radial-gradient(circle at top left, rgba(124, 58, 237, 0.15), transparent 30%),
+    radial-gradient(circle at top right, rgba(255, 0, 200, 0.12), transparent 30%),
+    radial-gradient(circle at bottom center, rgba(0, 229, 255, 0.12), transparent 35%);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

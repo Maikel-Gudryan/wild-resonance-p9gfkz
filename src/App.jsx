@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+
 import CardPrincipal from "./components/CardPrincipal";
 import Header from "./components/Header";
+import CardsPromocoes from "./components/CardsPromocoes";
+
 import API from "./services/api";
 
 function App() {
@@ -50,6 +53,8 @@ function App() {
         />
 
       )}
+
+      <CardsPromocoes />
 
     </div>
   );

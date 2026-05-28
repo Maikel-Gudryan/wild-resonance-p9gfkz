@@ -1,0 +1,256 @@
+.discount-section {
+  width: 100%;
+  margin-top: 80px;
+  padding: 0 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.discount-header {
+  width: 940px;
+  margin: 0 auto 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.discount-header h2 {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.discount-header button {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #c7d5e0;
+  padding: 7px 16px;
+  cursor: pointer;
+}
+
+.discount-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.discount-cards {
+  display: flex;
+  gap: 10px;
+}
+
+.previous-slide,
+.next-slide {
+  width: 45px;
+  height: 110px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.previous-slide:hover,
+.next-slide:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.game-card {
+  width: 310px;
+  height: 390px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #1b2838, #1f5a7c);
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.game-info {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-info h3 {
+  color: white;
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.game-info p {
+  color: #acdbf5;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.price-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.discount {
+  background: #4c6b22;
+  color: #b9f34b;
+  padding: 6px 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.prices {
+  background: rgba(0,0,0,0.25);
+  padding: 5px 10px;
+}
+
+.prices small {
+  display: block;
+  color: #7193a6;
+  text-decoration: line-through;
+  font-size: 11px;
+}
+
+.prices strong {
+  color: #beee11;
+  font-size: 18px;
+}
+
+.side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-card {
+  width: 300px;
+  height: 190px;
+  overflow: hidden;
+  background: #b7d5e5;
+  display: flex;
+  flex-direction: column;
+}
+
+.mini-card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.mini-info {
+  flex: 1;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mini-info span {
+  color: #263645;
+  font-size: 14px;
+}
+
+.mini-price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mini-price strong {
+  background: #4c6b22;
+  color: #b9f34b;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+.mini-price p {
+  color: #65a30d;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.slider-dots span {
+  width: 14px;
+  height: 9px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.2);
+}
+
+.active-dot {
+  background: #67c1f5 !important;
+}.previous-slide,
+.next-slide {
+  width: 48px;
+  height: 108px;
+
+  border: none;
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  color: white;
+
+  font-size: 42px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s;
+
+  border-radius: 2px;
+}
+.previous-slide,
+.next-slide {
+  width: 55px;
+  height: 110px;
+
+  border: none;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  color: #ffffff;
+
+  font-size: 38px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  border-radius: 8px;
+
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.previous-slide:hover,
+.next-slide:hover {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 0 20px rgba(103, 193, 245, 0.4),
+    0 0 40px rgba(103, 193, 245, 0.15);
+
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.previous-slide:active,
+.next-slide:active {
+  transform: scale(0.95);
+}
