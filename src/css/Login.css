@@ -1,0 +1,16 @@
+.sessao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.botao{
+    border-radius: 10px;
+}
