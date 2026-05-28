@@ -1,10 +1,14 @@
 import "../CSS/cardPrincipal.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CardPrincipal({
   jogo,
   proximoJogo,
   voltarJogo
 }) {
+  const navigate = useNavigate();
+
+  if (!jogo) return null;
 
   const imagens =
     jogo.imagens && jogo.imagens.length > 0
@@ -16,6 +20,10 @@ export default function CardPrincipal({
           { url: jogo.capaUrl }
         ];
 
+  function abrirDetalhes() {
+    navigate(`/jogo/${jogo.id}`);
+  }
+
   return (
     <div className="featured-container">
 
@@ -26,7 +34,12 @@ export default function CardPrincipal({
         ❮
       </button>
 
-      <div className="featured-card">
+      {/* CARD PRINCIPAL */}
+      <div
+        className="featured-card"
+        onClick={abrirDetalhes}
+        style={{ cursor: "pointer" }}
+      >
 
         <div className="featured-left">
           <img
@@ -45,7 +58,6 @@ export default function CardPrincipal({
           <div className="mini-images">
 
             {imagens.slice(0, 4).map((img, index) => (
-
               <img
                 key={index}
                 src={
@@ -55,7 +67,6 @@ export default function CardPrincipal({
                 }
                 alt=""
               />
-
             ))}
 
           </div>
@@ -79,6 +90,37 @@ export default function CardPrincipal({
             </div>
 
           </div>
+
+        </div>
+
+        {/* =========================
+           HOVER STEAM STYLE
+        ========================= */}
+        <div className="featured-hover">
+
+          <h3>{jogo.titulo}</h3>
+
+          <p className="featured-genre">
+            {jogo.generos?.[0]?.nome || "Ação"}
+          </p>
+
+          <div className="featured-images">
+
+            <img
+              src={jogo.capaUrl || "https://placehold.co/300x200"}
+              alt=""
+            />
+
+            <img
+              src={jogo.capaUrl || "https://placehold.co/300x200"}
+              alt=""
+            />
+
+          </div>
+
+          <p className="featured-review">
+            Muito positivas
+          </p>
 
         </div>
 

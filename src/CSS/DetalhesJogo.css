@@ -1,0 +1,197 @@
+.detalhe-page {
+  background: #0f1014;
+  color: white;
+  padding: 50px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* =========================
+   TOP LAYOUT
+========================= */
+.detalhe-top {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* =========================
+   MEDIA AREA
+========================= */
+.detalhe-media {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* 🔥 IMAGEM PRINCIPAL REALMENTE QUADRADA E CENTRAL */
+.media-box {
+  width: 520px;
+  height: 520px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #1b1d25;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.media-box img,
+.media-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   SETAS
+========================= */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.55);
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  z-index: 10;
+  transition: 0.2s;
+}
+
+.arrow:hover {
+  background: rgba(42, 159, 255, 0.8);
+}
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+/* =========================
+   MINI IMAGENS (MAIS E MELHOR)
+========================= */
+.mini-gallery {
+  display: flex;
+  flex-wrap: wrap; /* 🔥 agora comporta muitas */
+  gap: 8px;
+  justify-content: center;
+  max-width: 520px;
+}
+
+.mini-gallery img {
+  width: 90px;   /* menor = mais imagens visíveis */
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+
+.mini-gallery img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.mini-gallery img.active {
+  opacity: 1;
+  border: 2px solid #2a9fff;
+}
+
+/* =========================
+   INFO LATERAL
+========================= */
+.detalhe-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.detalhe-info h1 {
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+/* descrição mais limpa */
+.desc {
+  color: #b8b8b8;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* preço destaque */
+.price {
+  font-size: 30px;
+  color: #00ff99;
+  font-weight: bold;
+}
+
+/* tags */
+.tags {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* =========================
+   BOTÃO COMPRAR (CORRIGIDO)
+========================= */
+.buy {
+  background: #2a9fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+
+  width: fit-content;   /* 🔥 impede esticamento */
+  display: inline-block;
+  transition: 0.2s;
+}
+
+.buy:hover {
+  background: #1f7ed6;
+  transform: scale(1.05);
+}
+
+/* extra info */
+.extra-info {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* =========================
+   SEÇÕES (SINOPSE / REQUISITOS)
+========================= */
+.section {
+  background: #14161c;
+  padding: 22px;
+  border-radius: 12px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.section p,
+.section li {
+  color: #b8b8b8;
+  line-height: 1.6;
+}
+
+.section ul {
+  padding-left: 18px;
+}
