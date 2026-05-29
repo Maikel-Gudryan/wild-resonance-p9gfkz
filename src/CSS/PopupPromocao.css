@@ -1,0 +1,341 @@
+.popup-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 999999999 !important;
+
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.popup-container {
+  width: 760px;
+
+  background: linear-gradient(
+    180deg,
+    #1b2230 0%,
+    #121822 100%
+  );
+
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+
+  border: 1px solid rgba(42, 159, 255, 0.18);
+
+  box-shadow:
+    0 0 40px rgba(42, 159, 255, 0.12),
+    0 30px 80px rgba(0, 0, 0, 0.75);
+
+  animation: popupEnter 0.35s ease;
+}
+
+/* =========================
+   FECHAR
+========================= */
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  transition: 0.2s;
+}
+
+.popup-close:hover {
+  background: #2a9fff;
+  transform: scale(1.05);
+}
+
+/* =========================
+   CONTENT
+========================= */
+.popup-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+  gap: 20px;
+}
+
+/* =========================
+   CARD
+========================= */
+.popup-card {
+  width: 500px;
+
+  background: linear-gradient(
+    180deg,
+    #101620 0%,
+    #0b1017 100%
+  );
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* =========================
+   HEADER
+========================= */
+.popup-header {
+  background: linear-gradient(
+    90deg,
+    #1f7ed6 0%,
+    #2a9fff 100%
+  );
+
+  color: white;
+
+  text-align: center;
+
+  font-weight: bold;
+
+  padding: 15px;
+
+  font-size: 22px;
+
+  letter-spacing: 1px;
+
+  box-shadow: 0 4px 20px rgba(42,159,255,0.25);
+}
+
+/* =========================
+   IMG
+========================= */
+.popup-card img {
+  width: 100%;
+  height: 320px;
+
+  object-fit: cover;
+
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+   INFO
+========================= */
+.popup-info {
+  padding: 22px;
+}
+
+.popup-info h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+
+  color: #ffffff;
+}
+
+.popup-info p {
+  color: #aeb7c5;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* =========================
+   TAGS
+========================= */
+.popup-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  margin-top: 18px;
+}
+
+.popup-tags span {
+  background: rgba(42,159,255,0.12);
+
+  border: 1px solid rgba(42,159,255,0.2);
+
+  color: #7fc7ff;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+}
+
+/* =========================
+   PREÇO
+========================= */
+.popup-price {
+  margin-top: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.popup-price span {
+  background: linear-gradient(
+    180deg,
+    #4caf50,
+    #2e8b57
+  );
+
+  padding: 10px 14px;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+
+  color: white;
+}
+
+.popup-price small {
+  display: block;
+
+  color: #7f8a9d;
+
+  text-decoration: line-through;
+
+  margin-bottom: 4px;
+}
+
+.popup-price strong {
+  font-size: 30px;
+  color: #00ffaa;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+.popup-details {
+  width: 100%;
+
+  border: none;
+
+  background: linear-gradient(
+    90deg,
+    #1f7ed6 0%,
+    #2a9fff 100%
+  );
+
+  color: white;
+
+  padding: 18px;
+
+  cursor: pointer;
+
+  font-size: 17px;
+  font-weight: bold;
+
+  transition: 0.25s;
+}
+
+.popup-details:hover {
+  filter: brightness(1.1);
+}
+
+/* =========================
+   SETAS
+========================= */
+.popup-arrow {
+  border: none;
+
+  background: rgba(255,255,255,0.06);
+
+  color: white;
+
+  width: 64px;
+  height: 120px;
+
+  font-size: 40px;
+
+  cursor: pointer;
+
+  border-radius: 12px;
+
+  transition: 0.2s;
+}
+
+.popup-arrow:hover {
+  background: #2a9fff;
+  transform: scale(1.05);
+}
+
+/* =========================
+   DOTS
+========================= */
+.popup-dots {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 22px;
+}
+
+.popup-dots span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 999px;
+
+  background: #4a5568;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.popup-dots span:hover {
+  transform: scale(1.15);
+}
+
+.popup-dots .active {
+  background: #2a9fff;
+
+  box-shadow: 0 0 10px rgba(42,159,255,0.7);
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+@keyframes popupEnter {
+
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}

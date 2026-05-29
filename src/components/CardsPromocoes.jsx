@@ -1,25 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../CSS/cardsPromocoes.css";
 
-import API from "../services/api";
+export default function CardsPromocoes({ jogos }) {
 
-export default function CardsPromocoes() {
+  const navigate = useNavigate();
 
-  const [jogos, setJogos] = useState([]);
   const [indexAtual, setIndexAtual] = useState(0);
-
-  useEffect(() => {
-
-    fetch(`${API}/jogos`)
-      .then((res) => res.json())
-      .then((data) => {
-
-        setJogos(data.itens);
-
-      });
-
-  }, []);
 
   function proximoSlide() {
 
@@ -34,6 +22,12 @@ export default function CardsPromocoes() {
     if (indexAtual > 0) {
       setIndexAtual(indexAtual - 1);
     }
+
+  }
+
+  function abrirDetalhes(id) {
+
+    navigate(`/jogo/${id}`);
 
   }
 
@@ -65,7 +59,11 @@ export default function CardsPromocoes() {
         <div className="discount-cards">
 
           {/* CARD 1 */}
-          <div className="game-card">
+          <div
+            className="game-card"
+            onClick={() => abrirDetalhes(jogos[indexAtual]?.id)}
+            style={{ cursor: "pointer" }}
+          >
 
             <img
               src={
@@ -159,7 +157,11 @@ export default function CardsPromocoes() {
 
 
           {/* CARD 2 */}
-          <div className="game-card">
+          <div
+            className="game-card"
+            onClick={() => abrirDetalhes(jogos[indexAtual + 1]?.id)}
+            style={{ cursor: "pointer" }}
+          >
 
             <img
               src={
@@ -252,12 +254,15 @@ export default function CardsPromocoes() {
           </div>
 
 
-
           {/* COLUNA DIREITA */}
           <div className="side-column">
 
             {/* MINI CARD 1 */}
-            <div className="mini-card">
+            <div
+              className="mini-card"
+              onClick={() => abrirDetalhes(jogos[indexAtual + 2]?.id)}
+              style={{ cursor: "pointer" }}
+            >
 
               <img
                 src={
@@ -281,12 +286,18 @@ export default function CardsPromocoes() {
                 <div className="mini-hover-imgs">
 
                   <img
-                    src={jogos[indexAtual + 2]?.capaUrl || "https://placehold.co/200x120"}
+                    src={
+                      jogos[indexAtual + 2]?.capaUrl ||
+                      "https://placehold.co/200x120"
+                    }
                     alt=""
                   />
 
                   <img
-                    src={jogos[indexAtual + 2]?.capaUrl || "https://placehold.co/200x120"}
+                    src={
+                      jogos[indexAtual + 2]?.capaUrl ||
+                      "https://placehold.co/200x120"
+                    }
                     alt=""
                   />
 
@@ -321,7 +332,11 @@ export default function CardsPromocoes() {
 
 
             {/* MINI CARD 2 */}
-            <div className="mini-card">
+            <div
+              className="mini-card"
+              onClick={() => abrirDetalhes(jogos[indexAtual + 3]?.id)}
+              style={{ cursor: "pointer" }}
+            >
 
               <img
                 src={
@@ -345,12 +360,18 @@ export default function CardsPromocoes() {
                 <div className="mini-hover-imgs">
 
                   <img
-                    src={jogos[indexAtual + 3]?.capaUrl || "https://placehold.co/200x120"}
+                    src={
+                      jogos[indexAtual + 3]?.capaUrl ||
+                      "https://placehold.co/200x120"
+                    }
                     alt=""
                   />
 
                   <img
-                    src={jogos[indexAtual + 3]?.capaUrl || "https://placehold.co/200x120"}
+                    src={
+                      jogos[indexAtual + 3]?.capaUrl ||
+                      "https://placehold.co/200x120"
+                    }
                     alt=""
                   />
 

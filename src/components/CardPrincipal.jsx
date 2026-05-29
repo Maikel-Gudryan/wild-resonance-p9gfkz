@@ -14,11 +14,11 @@ export default function CardPrincipal({
     jogo.imagens && jogo.imagens.length > 0
       ? jogo.imagens
       : [
-          { url: jogo.capaUrl },
-          { url: jogo.capaUrl },
-          { url: jogo.capaUrl },
-          { url: jogo.capaUrl }
-        ];
+        { url: jogo.capaUrl },
+        { url: jogo.capaUrl },
+        { url: jogo.capaUrl },
+        { url: jogo.capaUrl }
+      ];
 
   function abrirDetalhes() {
     navigate(`/jogo/${jogo.id}`);
@@ -93,9 +93,9 @@ export default function CardPrincipal({
 
         </div>
 
-        {/* =========================
-           HOVER STEAM STYLE
-        ========================= */}
+        
+          {/*  HOVER STEAM STYLE */}
+      
         <div className="featured-hover">
 
           <h3>{jogo.titulo}</h3>
