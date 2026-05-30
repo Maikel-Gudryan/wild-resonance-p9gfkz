@@ -6,13 +6,13 @@ import Header from "./components/Header";
 import CardsPromocoes from "./components/CardsPromocoes";
 import DetalheJogo from "./components/DetalhesJogo";
 import PopupPromocao from "./components/PopupPromocao";
+import ExploreCategorias from "./components/ExploreCategorias";
 
 import API from "./services/api";
 
 function App() {
 
   const [jogos, setJogos] = useState([]);
-
   const [indexAtual, setIndexAtual] = useState(0);
 
   useEffect(() => {
@@ -70,6 +70,7 @@ function App() {
           element={
             <>
 
+              {/* BANNER PRINCIPAL */}
               {jogos.length > 0 && (
 
                 <CardPrincipal
@@ -80,9 +81,13 @@ function App() {
 
               )}
 
+              {/* PROMOÇÕES */}
               <CardsPromocoes
                 jogos={jogos}
               />
+
+              {/* EXPLORE POR CATEGORIA */}
+              <ExploreCategorias />
 
             </>
           }

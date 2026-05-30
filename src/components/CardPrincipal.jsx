@@ -1,6 +1,7 @@
 import "../CSS/cardPrincipal.css";
 import { useNavigate } from "react-router-dom";
 
+
 export default function CardPrincipal({
   jogo,
   proximoJogo,

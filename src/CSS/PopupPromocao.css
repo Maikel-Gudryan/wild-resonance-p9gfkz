@@ -1,291 +1,416 @@
-.popup-overlay {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 999999999 !important;
+/* ===================================
+   OVERLAY
+=================================== */
 
-  background: rgba(0, 0, 0, 0.78);
-  backdrop-filter: blur(12px);
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 999999;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  animation: fadeIn 0.4s ease;
+  background: rgba(0,0,0,.82);
+
+  backdrop-filter: blur(14px);
+
+  animation: fadeIn .3s ease;
 }
+
+/* ===================================
+   CONTAINER
+=================================== */
 
 .popup-container {
-  width: 760px;
+  width: 1050px;
+  max-width: 95vw;
 
-  background: linear-gradient(
-    180deg,
-    #1b2230 0%,
-    #121822 100%
-  );
-
-  border-radius: 18px;
   overflow: hidden;
+
+  border-radius: 22px;
+
   position: relative;
 
-  border: 1px solid rgba(42, 159, 255, 0.18);
+  background:
+    linear-gradient(
+      180deg,
+      #091326,
+      #050c18
+    );
+
+  border:
+    1px solid rgba(42,159,255,.18);
 
   box-shadow:
-    0 0 40px rgba(42, 159, 255, 0.12),
-    0 30px 80px rgba(0, 0, 0, 0.75);
+    0 0 0 1px rgba(42,159,255,.08),
+    0 30px 90px rgba(0,0,0,.85);
 
-  animation: popupEnter 0.35s ease;
+  animation:
+    popupEnter .35s ease;
 }
 
-/* =========================
+/* ===================================
+   BORDA PREMIUM
+=================================== */
+
+.popup-container::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(42,159,255,.7),
+      rgba(90,120,255,.4),
+      rgba(42,159,255,.7)
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  pointer-events: none;
+}
+
+/* ===================================
    FECHAR
-========================= */
+=================================== */
+
 .popup-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
 
-  width: 36px;
-  height: 36px;
+  top: 18px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
 
   border: none;
-  border-radius: 10px;
 
-  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+
+  background:
+    rgba(0,0,0,.45);
 
   color: white;
 
+  font-size: 16px;
+
   cursor: pointer;
 
-  z-index: 20;
+  z-index: 999;
 
-  transition: 0.2s;
+  transition: .25s;
 }
 
 .popup-close:hover {
   background: #2a9fff;
-  transform: scale(1.05);
 }
 
-/* =========================
-   CONTENT
-========================= */
-.popup-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 30px;
-  gap: 20px;
-}
-
-/* =========================
+/* ===================================
    CARD
-========================= */
+=================================== */
+
 .popup-card {
-  width: 500px;
+  position: relative;
+}
 
-  background: linear-gradient(
-    180deg,
-    #101620 0%,
-    #0b1017 100%
-  );
+/* ===================================
+   BANNER
+=================================== */
 
-  border-radius: 16px;
+.popup-banner {
+  position: relative;
+
+  height: 560px;
+
   overflow: hidden;
-
-  border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* =========================
-   HEADER
-========================= */
-.popup-header {
-  background: linear-gradient(
-    90deg,
-    #1f7ed6 0%,
-    #2a9fff 100%
-  );
-
-  color: white;
-
-  text-align: center;
-
-  font-weight: bold;
-
-  padding: 15px;
-
-  font-size: 22px;
-
-  letter-spacing: 1px;
-
-  box-shadow: 0 4px 20px rgba(42,159,255,0.25);
-}
-
-/* =========================
-   IMG
-========================= */
-.popup-card img {
+.popup-banner img {
   width: 100%;
-  height: 320px;
+  height: 100%;
 
   object-fit: cover;
 
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: block;
+
+  transition: .4s;
 }
 
-/* =========================
+.popup-banner:hover img {
+  transform: scale(1.03);
+}
+
+/* ===================================
+   BADGE
+=================================== */
+
+.popup-badge {
+  position: absolute;
+
+  top: 24px;
+  left: 24px;
+
+  z-index: 20;
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2a9fff,
+      #1976d2
+    );
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+/* ===================================
+   GRADIENTE
+=================================== */
+
+.popup-gradient {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(4,10,20,.98) 8%,
+      rgba(4,10,20,.75) 35%,
+      transparent 80%
+    );
+}
+
+/* ===================================
    INFO
-========================= */
+=================================== */
+
 .popup-info {
-  padding: 22px;
+  width: 100%;
+
+  padding: 40px;
+
+  position: relative;
+
+  z-index: 20;
 }
 
 .popup-info h2 {
-  font-size: 30px;
-  margin-bottom: 12px;
+  font-size: 44px;
 
-  color: #ffffff;
+  font-weight: 800;
+
+  color: white;
+
+  margin-bottom: 12px;
 }
 
 .popup-info p {
-  color: #aeb7c5;
-  line-height: 1.7;
-  font-size: 14px;
+  max-width: 700px;
+
+  color: #d8e2f5;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  margin-bottom: 24px;
 }
 
-/* =========================
+/* ===================================
    TAGS
-========================= */
+=================================== */
+
 .popup-tags {
   display: flex;
-  gap: 8px;
+
   flex-wrap: wrap;
 
-  margin-top: 18px;
+  gap: 10px;
+
+  margin-bottom: 18px;
 }
 
 .popup-tags span {
-  background: rgba(42,159,255,0.12);
+  background:
+    rgba(42,159,255,.14);
 
-  border: 1px solid rgba(42,159,255,0.2);
+  border:
+    1px solid rgba(42,159,255,.25);
 
-  color: #7fc7ff;
+  color: #9bd7ff;
 
-  padding: 6px 10px;
+  padding: 8px 12px;
 
   border-radius: 999px;
 
   font-size: 12px;
+
+  font-weight: 600;
+}
+/* ===================================
+   FOOTER
+=================================== */
+
+.popup-footer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 24px 30px;
+
+  background:
+    rgba(255,255,255,.03);
+
+  border-top:
+    1px solid rgba(255,255,255,.06);
 }
 
-/* =========================
+/* ===================================
    PREÇO
-========================= */
-.popup-price {
-  margin-top: 22px;
+=================================== */
 
+.popup-price-footer span {
+  display: block;
+
+  color: #9aa8c4;
+
+  font-size: 12px;
+
+  margin-bottom: 8px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+.popup-price {
   display: flex;
+
   align-items: center;
+
   gap: 16px;
 }
 
-.popup-price span {
-  background: linear-gradient(
-    180deg,
-    #4caf50,
-    #2e8b57
-  );
+.discount {
+  background:
+    linear-gradient(
+      135deg,
+      #36d46c,
+      #1db954
+    );
+
+  color: white;
 
   padding: 10px 14px;
 
-  border-radius: 8px;
+  border-radius: 10px;
 
-  font-weight: bold;
+  font-size: 15px;
 
-  color: white;
+  font-weight: 800;
+
+  box-shadow:
+    0 5px 20px rgba(54,212,108,.25);
 }
 
 .popup-price small {
   display: block;
 
-  color: #7f8a9d;
+  color: #8f9db7;
 
   text-decoration: line-through;
 
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+
+  font-size: 13px;
 }
 
 .popup-price strong {
-  font-size: 30px;
-  color: #00ffaa;
+  font-size: 34px;
+
+  color: white;
+
+  font-weight: 800;
 }
 
-/* =========================
-   BOTÃO
-========================= */
+/* ===================================
+   BOTÃO PRINCIPAL
+=================================== */
+
 .popup-details {
-  width: 100%;
+  min-width: 190px;
+
+  height: 54px;
 
   border: none;
-
-  background: linear-gradient(
-    90deg,
-    #1f7ed6 0%,
-    #2a9fff 100%
-  );
-
-  color: white;
-
-  padding: 18px;
-
-  cursor: pointer;
-
-  font-size: 17px;
-  font-weight: bold;
-
-  transition: 0.25s;
-}
-
-.popup-details:hover {
-  filter: brightness(1.1);
-}
-
-/* =========================
-   SETAS
-========================= */
-.popup-arrow {
-  border: none;
-
-  background: rgba(255,255,255,0.06);
-
-  color: white;
-
-  width: 64px;
-  height: 120px;
-
-  font-size: 40px;
-
-  cursor: pointer;
 
   border-radius: 12px;
 
-  transition: 0.2s;
+  padding: 0 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2a9fff,
+      #1976d2
+    );
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .25s;
 }
 
-.popup-arrow:hover {
-  background: #2a9fff;
-  transform: scale(1.05);
+.popup-details:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(42,159,255,.35);
 }
 
-/* =========================
+/* ===================================
    DOTS
-========================= */
+=================================== */
+
 .popup-dots {
   display: flex;
+
   justify-content: center;
 
   gap: 10px;
 
-  padding: 22px;
+  padding: 18px 0;
 }
 
 .popup-dots span {
@@ -294,11 +419,12 @@
 
   border-radius: 999px;
 
-  background: #4a5568;
+  background:
+    rgba(255,255,255,.18);
 
   cursor: pointer;
 
-  transition: 0.2s;
+  transition: .25s;
 }
 
 .popup-dots span:hover {
@@ -308,22 +434,74 @@
 .popup-dots .active {
   background: #2a9fff;
 
-  box-shadow: 0 0 10px rgba(42,159,255,0.7);
+  box-shadow:
+    0 0 12px rgba(42,159,255,.8);
 }
 
-/* =========================
+/* ===================================
+   NAVEGAÇÃO
+=================================== */
+
+.popup-navigation {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding:
+    0 30px 25px;
+}
+
+.popup-nav-btn {
+  border: none;
+
+  background:
+    rgba(255,255,255,.06);
+
+  color: white;
+
+  height: 44px;
+
+  padding: 0 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: .25s;
+}
+
+.popup-nav-btn:hover {
+  background:
+    rgba(42,159,255,.20);
+
+  border-color:
+    rgba(42,159,255,.4);
+}
+
+/* ===================================
    ANIMAÇÕES
-========================= */
+=================================== */
+
 @keyframes popupEnter {
 
   from {
-    transform: scale(0.85);
+
     opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(.96);
+
   }
 
   to {
-    transform: scale(1);
+
     opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
   }
 
 }
@@ -336,6 +514,84 @@
 
   to {
     opacity: 1;
+  }
+
+}
+
+/* ===================================
+   RESPONSIVO
+=================================== */
+
+@media (max-width: 900px) {
+
+  .popup-container {
+    width: 95vw;
+  }
+
+  .popup-banner {
+    height: 420px;
+  }
+
+  .popup-info h2 {
+    font-size: 34px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .popup-banner {
+    height: 320px;
+  }
+
+  .popup-info {
+    padding: 25px;
+  }
+
+  .popup-info h2 {
+    font-size: 28px;
+  }
+
+  .popup-footer {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .popup-details {
+    width: 100%;
+  }
+
+  .popup-navigation {
+    gap: 10px;
+  }
+
+  .popup-nav-btn {
+    flex: 1;
+  }
+
+}
+
+@media (max-width: 550px) {
+
+  .popup-banner {
+    height: 240px;
+  }
+
+  .popup-info h2 {
+    font-size: 22px;
+  }
+
+  .popup-info p {
+    font-size: 13px;
+  }
+
+  .popup-price strong {
+    font-size: 26px;
+  }
+
+  .popup-details {
+    height: 50px;
   }
 
 }

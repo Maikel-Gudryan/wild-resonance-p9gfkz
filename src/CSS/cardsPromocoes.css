@@ -106,7 +106,6 @@
   line-height: 18px;
 }
 
-/* PRICE */
 .price-box {
   display: flex;
   align-items: center;
@@ -220,7 +219,7 @@
   gap: 10px;
 }
 
-/* MINI CARD */
+
 .mini-card {
   position: relative;
   width: 300px;

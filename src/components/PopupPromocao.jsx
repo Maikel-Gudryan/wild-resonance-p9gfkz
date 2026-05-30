@@ -6,26 +6,21 @@ import "../CSS/PopupPromocao.css";
 export default function PopupPromocao({ jogos }) {
 
   const [aberto, setAberto] = useState(false);
-
   const [slide, setSlide] = useState(0);
 
   const navigate = useNavigate();
-
 
   useEffect(() => {
 
     if (!jogos.length) return;
 
     const timer = setTimeout(() => {
-
       setAberto(true);
-
     }, 1200);
 
     return () => clearTimeout(timer);
 
   }, [jogos.length]);
-
 
   useEffect(() => {
 
@@ -33,15 +28,11 @@ export default function PopupPromocao({ jogos }) {
 
     const autoSlide = setInterval(() => {
 
-      setSlide(prev => {
-
-        if (prev >= jogos.length - 1) {
-          return 0;
-        }
-
-        return prev + 1;
-
-      });
+      setSlide(prev =>
+        prev >= jogos.length - 1
+          ? 0
+          : prev + 1
+      );
 
     }, 5000);
 
@@ -49,46 +40,33 @@ export default function PopupPromocao({ jogos }) {
 
   }, [aberto, jogos.length]);
 
-
   if (!aberto || jogos.length === 0) {
     return null;
   }
 
   const jogo = jogos[slide];
 
- 
   function fechar() {
-
     setAberto(false);
-
   }
-
 
   function next() {
 
-    setSlide(prev => {
-
-      if (prev >= jogos.length - 1) {
-        return 0;
-      }
-
-      return prev + 1;
-
-    });
+    setSlide(prev =>
+      prev >= jogos.length - 1
+        ? 0
+        : prev + 1
+    );
 
   }
 
   function prev() {
 
-    setSlide(prev => {
-
-      if (prev <= 0) {
-        return jogos.length - 1;
-      }
-
-      return prev - 1;
-
-    });
+    setSlide(prev =>
+      prev <= 0
+        ? jogos.length - 1
+        : prev - 1
+    );
 
   }
 
@@ -106,7 +84,6 @@ export default function PopupPromocao({ jogos }) {
 
       <div className="popup-container">
 
-        {/* FECHAR */}
         <button
           className="popup-close"
           onClick={fechar}
@@ -114,69 +91,69 @@ export default function PopupPromocao({ jogos }) {
           ✕
         </button>
 
-        {/* CONTEÚDO */}
-        <div className="popup-content">
+        <div className="popup-card">
 
-          {/* SETA ESQUERDA */}
-          <button
-            className="popup-arrow left"
-            onClick={prev}
-          >
-            ❮
-          </button>
+          <div className="popup-banner">
 
-          {/* CARD */}
-          <div className="popup-card">
-
-            {/* HEADER */}
-            <div className="popup-header">
-
-              🔥 OFERTA ESPECIAL 🔥
-
-            </div>
-
-            {/* IMAGEM */}
             <img
               src={
+                jogo.bannerUrl ||
                 jogo.capaUrl ||
-                "https://placehold.co/900x500"
+                "https://placehold.co/1200x600"
               }
               alt={jogo.titulo}
             />
 
-            {/* INFO */}
-            <div className="popup-info">
+            <div className="popup-badge">
+              OFERTA DA SEMANA
+            </div>
 
-              <h2>
-                {jogo.titulo}
-              </h2>
+            <div className="popup-gradient">
 
-              <p>
-                {
-                  jogo.descricao?.slice(0, 140)
-                }...
-              </p>
+              <div className="popup-info">
 
-              {/* TAGS */}
-              <div className="popup-tags">
+                <div className="popup-tags">
 
-                <span>
+                  <span>
+                    {
+                      jogo.generos?.[0]?.nome ||
+                      "Ação"
+                    }
+                  </span>
+
+                  <span>Popular</span>
+
+                  <span>Online</span>
+
+                </div>
+
+                <h2>
+                  {jogo.titulo}
+                </h2>
+
+                <p>
                   {
-                    jogo.generos?.[0]?.nome ||
-                    "Ação"
-                  }
-                </span>
-
-                <span>Popular</span>
-
-                <span>Online</span>
+                    jogo.descricao?.slice(0, 150)
+                  }...
+                </p>
 
               </div>
 
-              {/* PREÇO */}
+            </div>
+
+          </div>
+
+          {/* FOOTER */}
+
+          <div className="popup-footer">
+
+            <div className="popup-price-footer">
+
+              <span>Preço Atual</span>
+
               <div className="popup-price">
 
-                <span>
+                <span className="discount">
                   -75%
                 </span>
 
@@ -196,27 +173,19 @@ export default function PopupPromocao({ jogos }) {
 
             </div>
 
-            {/* BOTÃO */}
             <button
               className="popup-details"
               onClick={abrirDetalhes}
             >
-              VER DETALHES
+              Ver Jogo
             </button>
 
           </div>
 
-          {/* SETA DIREITA */}
-          <button
-            className="popup-arrow right"
-            onClick={next}
-          >
-            ❯
-          </button>
-
         </div>
 
-        {/* BOLINHAS */}
+        {/* DOTS */}
+
         <div className="popup-dots">
 
           {jogos.slice(0, 5).map((_, i) => (
@@ -232,6 +201,26 @@ export default function PopupPromocao({ jogos }) {
             />
 
           ))}
+
+        </div>
+
+        {/* NAVEGAÇÃO */}
+
+        <div className="popup-navigation">
+
+          <button
+            className="popup-nav-btn"
+            onClick={prev}
+          >
+            ❮ Anterior
+          </button>
+
+          <button
+            className="popup-nav-btn"
+            onClick={next}
+          >
+            Próximo ❯
+          </button>
 
         </div>
 
