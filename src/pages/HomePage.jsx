@@ -17,36 +17,41 @@ export default function HomePage() {
           </div>
         </div>
 
-        <button className="btn-gerenciar">⚙ Gerenciar Tipos</button>
+        <a href="/Usuarios" className="btn-gerenciar">⚙ Gerenciar Tipos</a>
       </section>
 
       <section className="cards">
-        <div className="card ativo">
-          <h3>Registrar Nova Denúncia</h3>
+         <a href="/novadenuncia">
+          <div className="card ativo">
+           
+              <h3>Registrar Nova Denúncia</h3>
 
-          <p>Informe irregularidades na sua rua ou bairro.</p>
-        </div>
+              <p>Informe irregularidades na sua rua ou bairro.</p>
+          </div>
+        </a>
+        <a href="/denuncias">
+          <div className="card">
+              <h3>Minhas Denúncias</h3>
 
-        <div className="card">
-          <h3>Minhas Denúncias</h3>
+              <p>Acompanhe o status e as atualizações dos seus chamados.</p>
+          </div>
+        </a>
+        <a href="/departamento">
+          <div className="card">
+              <h3>Departamentos</h3>
 
-          <p>Acompanhe o status e as atualizações dos seus chamados.</p>
-        </div>
-
-        <div className="card">
-          <h3>Departamentos</h3>
-
-          <p>Encontre contatos e endereços dos órgãos municipais.</p>
-        </div>
+              <p>Encontre contatos e endereços dos órgãos municipais.</p>  
+          </div>
+        </a>
       </section>
 
       <section className="denuncias">
         <div className="titulo-area">
           <h2>Denúncias Recentes</h2>
 
-          <a href="/">Ver tudo →</a>
+          <a href="/Denuncias">Ver tudo →</a>
         </div>
-
+        
         <div className="denuncias-grid">
           <div className="denuncia-card">
             <span className="status aberto">Em Aberto</span>

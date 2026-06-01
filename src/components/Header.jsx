@@ -8,8 +8,8 @@ export default function App() {
 
         <nav className="menu">
           <a href="/">Início</a>
-          <a href="/">Denúncias</a>
-          <a href="/">Diretório</a>
+          <a href="/denuncias">Denúncias</a>
+          <a href="/departamentos">Diretório</a>
 
           <button>Sair</button>
         </nav>

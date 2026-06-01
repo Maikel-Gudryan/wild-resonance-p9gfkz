@@ -13,12 +13,6 @@ export default function Login(email, senha) {
     const entrarLogin = () => {
         entrar = email && senha 
     }
-    const emailConectado = () => {
-        emailConectado = email
-    }
-    const senhaConectada = () => {
-        senhaConectada = senha
-    }
 
     return(
         <div className = "sessao">
@@ -47,7 +41,6 @@ export default function Login(email, senha) {
             <div className="botao">
                 <button
                     onClick={entrarLogin}
-                    value={entrar}
                 >
                     Iniciar Sessão!
                 </button>

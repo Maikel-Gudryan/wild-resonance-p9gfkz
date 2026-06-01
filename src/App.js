@@ -1,15 +1,32 @@
 import "./styles.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
+import Denuncias from "./pages/Denuncias";
+import NovaDenuncia from "./pages/NovaDenuncia";
+import Usuarios from "./pages/Usuarios";
+
 
 export default function App() {
+
   return (
+    
     <div>
-      <Header />
-      <Cadastro/>
+      <BrowserRouter>
+        <Header />
+        <Routes>  
+
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/denuncias" element={<Denuncias />} />
+          <Route path="/novadenuncias" element={<NovaDenuncia />} />
+          <Route path="/usuarios" element={<Usuarios />} />
+
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
-''
