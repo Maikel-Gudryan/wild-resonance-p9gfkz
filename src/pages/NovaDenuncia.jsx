@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, link } from "react-router-dom";
 import "../css/Login.css"
 
 export default function NovaDenuncia () {

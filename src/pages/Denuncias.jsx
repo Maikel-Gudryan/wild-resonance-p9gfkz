@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, link } from "react-router-dom";
 import "../css/Login.css"
 
 export default function Denuncias() {
@@ -16,8 +17,8 @@ export default function Denuncias() {
                     onChange={(e) => setPesquisarDenuncia(e.target.value)}
                     placeholder="Bucar por protocolo, titulo ou endereço..."
                 />
-                <select
-                
+                <select link="http"
+
                 >
                     filtrar
                 </select>

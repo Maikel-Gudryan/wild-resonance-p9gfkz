@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Cadastro from "./Cadastro";
+import { useNavigate, link } from "react-router-dom";
 import "../css/Login.css"
 
 export default function Login(email, senha) {
@@ -45,6 +46,7 @@ export default function Login(email, senha) {
                     Iniciar Sessão!
                 </button>
             </div>
+            <a href="/Cadastro">Cadastrar Aqui</a>
         </div>
     )
 }

@@ -11,7 +11,7 @@ export default function App() {
           <a href="/denuncias">Denúncias</a>
           <a href="/departamentos">Diretório</a>
 
-          <button>Sair</button>
+          <a href="/Login">Sair</a>
         </nav>
       </header>
     </div>

@@ -7,6 +7,7 @@ import Cadastro from "./pages/Cadastro";
 import Denuncias from "./pages/Denuncias";
 import NovaDenuncia from "./pages/NovaDenuncia";
 import Usuarios from "./pages/Usuarios";
+import Departamentos from "./pages/Departamentos";
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/denuncias" element={<Denuncias />} />
           <Route path="/novadenuncias" element={<NovaDenuncia />} />
           <Route path="/usuarios" element={<Usuarios />} />
+          <Route path="/departamentos" element={<Departamentos />} />
 
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate, link } from "react-router-dom";
+import { api } from "../typescript/teste.ts";
 import "../css/Login.css"
 
 export default function Cadastro({}) {
@@ -66,7 +67,7 @@ export default function Cadastro({}) {
                     Criar Conta!
                 </button>
             </div>
-            
+            <a href="/login">Fazer Login</a>
 
 
         </div>

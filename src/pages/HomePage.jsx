@@ -1,4 +1,5 @@
 import "../home.css";
+import { useNavigate, link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -8,11 +9,12 @@ export default function HomePage() {
           <div className="avatar">👤</div>
 
           <div>
+            
             <h2>Cidadão Ativo</h2>
 
             <div className="infos">
-              <span className="cargo">FUNCIONÁRIO</span>
-              <span>ID #123</span>
+                <span className="cargo">FUNCIONÁRIO</span>
+                <span>ID #123</span>
             </div>
           </div>
         </div>
