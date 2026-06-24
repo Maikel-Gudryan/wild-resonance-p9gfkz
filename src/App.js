@@ -1,34 +1,37 @@
-import "./styles.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import HomePage from "./pages/HomePage";
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
-import Denuncias from "./pages/Denuncias";
-import NovaDenuncia from "./pages/NovaDenuncia";
-import Usuarios from "./pages/Usuarios";
-import Departamentos from "./pages/Departamentos";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { isAuthenticated } from './api/api';
+import Header from './components/Header';
+import PrivateRoute from './Pages/PrivateRoute';
+import Login from './Pages/Login';
+import Cadastro from './Pages/Cadastro';
+import HomePage from './Pages/HomePage';
+import Denuncias from './Pages/Denuncias';
+import NovaDenuncia from './Pages/NovaDenuncia';
+import Departamentos from './Pages/Departamentos';
+import Usuarios from './Pages/Usuarios';
+import DetalhesDepartamento from './components/DetalhesDepartamento';
+import './css/global.css';
 
-
-export default function App() {
-
+function App() {
   return (
-    
-    <div>
-      <BrowserRouter>
-        <Header />
-        <Routes>  
-
-          <Route path="/" element={<HomePage />} />
+    <BrowserRouter>
+      <Header />
+      <main>
+        <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/denuncias" element={<Denuncias />} />
-          <Route path="/novadenuncias" element={<NovaDenuncia />} />
-          <Route path="/usuarios" element={<Usuarios />} />
-          <Route path="/departamentos" element={<Departamentos />} />
-
+          <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
+          <Route path="/denuncias" element={<PrivateRoute><Denuncias /></PrivateRoute>} />
+          <Route path="/novadenuncias" element={<PrivateRoute><NovaDenuncia /></PrivateRoute>} />
+          <Route path="/denuncias/nova" element={<PrivateRoute><NovaDenuncia /></PrivateRoute>} />
+          <Route path="/departamentos" element={<PrivateRoute><Departamentos /></PrivateRoute>} />
+          <Route path="/departamentos/:id" element={<PrivateRoute><DetalhesDepartamento /></PrivateRoute>} />
+          <Route path="/usuarios" element={<PrivateRoute><Usuarios /></PrivateRoute>} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </main>
+    </BrowserRouter>
   );
 }
+
+export default App;

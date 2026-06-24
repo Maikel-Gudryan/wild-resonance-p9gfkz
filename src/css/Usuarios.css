@@ -1,0 +1,57 @@
+.usuarios-container {
+  padding: 20px 0;
+}
+
+.usuarios-container h2 {
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+
+.usuarios-table {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border-collapse: collapse;
+}
+
+.usuarios-table thead {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.usuarios-table th {
+  padding: 14px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.usuarios-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.usuarios-table tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.role-badge {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-badge.cidadao {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+.role-badge.funcionario {
+  background: #cce5ff;
+  color: #004085;
+}

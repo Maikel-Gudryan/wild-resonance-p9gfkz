@@ -1,90 +1,67 @@
-import "../home.css";
-import { useNavigate, link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchDenuncias } from '../api/api';
+import '../css/HomePage.css';
 
 export default function HomePage() {
+  const [stats, setStats] = useState({ total: 0, pendentes: 0, resolvidas: 0 });
+
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const denuncias = await fetchDenuncias();
+        const total = denuncias.length;
+        const pendentes = denuncias.filter(d => d.status === 'Pendente').length;
+        const resolvidas = denuncias.filter(d => d.status === 'Resolvido').length;
+        setStats({ total, pendentes, resolvidas });
+      } catch (error) {
+        console.error('Erro ao carregar estatísticas:', error);
+      }
+    };
+    loadStats();
+  }, []);
+
   return (
-    <div className="container">
-      <section className="perfil">
-        <div className="perfil-left">
-          <div className="avatar">👤</div>
-
-          <div>
-            
-            <h2>Cidadão Ativo</h2>
-
-            <div className="infos">
-                <span className="cargo">FUNCIONÁRIO</span>
-                <span>ID #123</span>
-            </div>
-          </div>
-        </div>
-
-        <a href="/Usuarios" className="btn-gerenciar">⚙ Gerenciar Tipos</a>
+    <div className="home-container">
+      <section className="welcome">
+        <h1>Bem-vindo ao Prefeitura+</h1>
+        <p>Ajude a melhorar sua cidade registrando problemas urbanos</p>
       </section>
 
-      <section className="cards">
-         <a href="/novadenuncia">
-          <div className="card ativo">
-           
-              <h3>Registrar Nova Denúncia</h3>
+      <section className="cards-grid">
+        <Link to="/novadenuncias" className="card">
+          <div className="card-icon">📝</div>
+          <h3>Nova Denúncia</h3>
+          <p>Registre um problema na sua rua ou bairro</p>
+        </Link>
 
-              <p>Informe irregularidades na sua rua ou bairro.</p>
-          </div>
-        </a>
-        <a href="/denuncias">
-          <div className="card">
-              <h3>Minhas Denúncias</h3>
+        <Link to="/denuncias" className="card">
+          <div className="card-icon">📋</div>
+          <h3>Minhas Denúncias</h3>
+          <p>Acompanhe o status dos seus chamados</p>
+        </Link>
 
-              <p>Acompanhe o status e as atualizações dos seus chamados.</p>
-          </div>
-        </a>
-        <a href="/departamento">
-          <div className="card">
-              <h3>Departamentos</h3>
-
-              <p>Encontre contatos e endereços dos órgãos municipais.</p>  
-          </div>
-        </a>
+        <Link to="/departamentos" className="card">
+          <div className="card-icon">🏛️</div>
+          <h3>Departamentos</h3>
+          <p>Encontre os órgãos responsáveis</p>
+        </Link>
       </section>
 
-      <section className="denuncias">
-        <div className="titulo-area">
-          <h2>Denúncias Recentes</h2>
-
-          <a href="/Denuncias">Ver tudo →</a>
-        </div>
-        
-        <div className="denuncias-grid">
-          <div className="denuncia-card">
-            <span className="status aberto">Em Aberto</span>
-
-            <h4>Não definido</h4>
-
-            <p>Nao definido</p>
+      <section className="stats">
+        <h2>📊 Estatísticas</h2>
+        <div className="stats-grid">
+          <div className="stat-item">
+            <span className="stat-number">{stats.total}</span>
+            <span className="stat-label">Total de Denúncias</span>
           </div>
-
-          <div className="denuncia-card">
-            <span className="status analise">Em Análise</span>
-
-            <h4>Não definido</h4>
-
-            <p>Não definido</p>
+          <div className="stat-item">
+            <span className="stat-number">{stats.pendentes}</span>
+            <span className="stat-label">Pendentes</span>
           </div>
-
-          <div className="denuncia-card">
-            <span className="status concluido">Concluído</span>
-
-            <h4>Não definido</h4>
-
-            <p>Não definido</p>
-          </div>
-
-          <div className="denuncia-card">
-            <span className="status aberto">Em Aberto</span>
-
-            <h4>Não definido</h4>
-
-            <p>Não definido</p>
+          <div className="stat-item">
+            <span className="stat-number">{stats.resolvidas}</span>
+            <span className="stat-label">Resolvidas</span>
           </div>
         </div>
       </section>

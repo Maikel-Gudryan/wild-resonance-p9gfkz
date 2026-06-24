@@ -1,42 +1,58 @@
-import { useNavigate, link } from "react-router-dom";
-import "../css/Login.css"
+import { useEffect, useState } from 'react';
+import { fetchUsuarios } from '../api/api';
+import '../css/Usuarios.css';
 
 export default function Usuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-    return (
-        <div className="conta">
-            <h2>Meu Perfil</h2>
-            <p>Gerencie suas informações pessoais, segurança e configurações da conta.</p>
-            <section className="sessao">
-                <h3>Ações Rapidas</h3>
-                <div className="conta">
-                    <section>
-                        <h4>Meus Protocolos</h4>
-                        <p>Acompanhe seus pedidos</p>
-                    </section>
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await fetchUsuarios();
+        setUsuarios(data || []);
+      } catch (error) {
+        setError(error.message || 'Erro ao carregar usuários');
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
 
-                    <section>
-                        <h4>Certidões</h4>
-                        <p>Emitir e validar</p>
-                    </section>
+  if (loading) return <div className="loading">Carregando...</div>;
 
-                    <section>
-                        <h4>Agendamento</h4>
-                        <p>Consultas e serviços</p>
-                    </section>
-                </div>
-                <div className="conta">
-                    <h4>Segurança da Conta</h4>
-                    <p>Mantenha seus dados protegidos revisando suas credenciais de acesso regularmente.</p>
+  return (
+    <div className="usuarios-container">
+      <h2>👤 Usuários</h2>
 
-                    <h4>Senha de acesso</h4>
-                    <p>Última alteração</p>
+      {error && <div className="error-message">{error}</div>}
 
-                    <h4>Autenticação em Duas Etapas (2FA)</h4>
-                    <p>Adicione uma camada extra de proteção via SMS ou App.</p>
-                </div>
-            </section>
-        </div>
-    )
-
+      {usuarios.length === 0 ? (
+        <p className="empty">Nenhum usuário cadastrado.</p>
+      ) : (
+        <table className="usuarios-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Papel</th>
+            </tr>
+          </thead>
+          <tbody>
+            {usuarios.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.nome}</td>
+                <td>{user.email}</td>
+                <td><span className={`role-badge ${user.papel}`}>{user.papel}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
 }

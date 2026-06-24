@@ -1,37 +1,81 @@
-import { useState, useEffect } from "react";
-import { useNavigate, link } from "react-router-dom";
-import "../css/Login.css"
+import { useEffect, useState } from 'react';
+import { fetchDenuncias, confirmarDenuncia } from '../api/api';
+import '../css/Denuncias.css';
 
 export default function Denuncias() {
-    const [pesquisarDenuncia, setPesquisarDenuncia] = useState('');
-    const [denunciaSelecionar, setDenunciaSelecionar] = useState('');
-    
-    return(
-        <div className="conta">
-            <h2>Minhas Denuncias</h2>
-            <p>Acompanhe os status e detalhes das suas solicitações ativas e concluídas.</p>
-            <div >
-                <input
-                    type="text"
-                    value={pesquisarDenuncia}
-                    onChange={(e) => setPesquisarDenuncia(e.target.value)}
-                    placeholder="Bucar por protocolo, titulo ou endereço..."
-                />
-                <select link="http"
+  const [denuncias, setDenuncias] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-                >
-                    filtrar
-                </select>
-            </div>
+  useEffect(() => {
+    loadDenuncias();
+  }, []);
 
-            <div>
+  const loadDenuncias = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchDenuncias();
+      setDenuncias(data || []);
+    } catch (error) {
+      setError(error.message || 'Erro ao carregar denúncias');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleConfirmar = async (id) => {
+    try {
+      await confirmarDenuncia(id);
+      await loadDenuncias();
+    } catch (error) {
+      alert(error.message || 'Erro ao confirmar');
+    }
+  };
+
+  const getStatusClass = (status) => {
+    const map = {
+      'Pendente': 'status-pendente',
+      'Em análise': 'status-analise',
+      'Resolvido': 'status-resolvido'
+    };
+    return map[status] || 'status-pendente';
+  };
+
+  if (loading) return <div className="loading">Carregando...</div>;
+
+  return (
+    <div className="denuncias-container">
+      <h2>📋 Denúncias</h2>
+
+      {error && <div className="error-message">{error}</div>}
+
+      {denuncias.length === 0 ? (
+        <p className="empty">Nenhuma denúncia encontrada.</p>
+      ) : (
+        <div className="denuncias-list">
+          {denuncias.map((denuncia) => (
+            <div key={denuncia.id} className="denuncia-card">
+              <div className="denuncia-header">
+                <h3>{denuncia.titulo}</h3>
+                <span className={`status-badge ${getStatusClass(denuncia.status)}`}>
+                  {denuncia.status}
+                </span>
+              </div>
+              <p className="denuncia-desc">{denuncia.descricao}</p>
+              <p className="denuncia-endereco">📍 {denuncia.endereco_denuncia}</p>
+              <div className="denuncia-footer">
+                <span>Prioridade: {denuncia.prioridade || 1}</span>
                 <button
+                  className="btn-confirmar"
+                  onClick={() => handleConfirmar(denuncia.id)}
                 >
-                    Carregar mais
+                  ✅ Confirmar
                 </button>
+              </div>
             </div>
+          ))}
         </div>
-    )
-    
-
+      )}
+    </div>
+  );
 }

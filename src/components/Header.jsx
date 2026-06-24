@@ -1,19 +1,35 @@
-import "../styles-header.css";
+import { Link, useNavigate } from 'react-router-dom';
+import { isAuthenticated, setAuthToken } from '../api/api';
+import '../css/Header.css';
 
-export default function App() {
+export default function Header() {
+  const navigate = useNavigate();
+  const loggedIn = isAuthenticated();
+
+  const handleLogout = () => {
+    setAuthToken(null);
+    navigate('/login');
+  };
+
   return (
-    <div>
-      <header className="header">
-        <h1 className="logo">Prefeitura+</h1>
-
-        <nav className="menu">
-          <a href="/">Início</a>
-          <a href="/denuncias">Denúncias</a>
-          <a href="/departamentos">Diretório</a>
-
-          <a href="/Login">Sair</a>
-        </nav>
-      </header>
-    </div>
+    <header className="header">
+      <div className="header-container">
+        <Link to="/" className="logo">🏛️ Prefeitura+</Link>
+        {loggedIn ? (
+          <nav>
+            <Link to="/">Início</Link>
+            <Link to="/denuncias">Denúncias</Link>
+            <Link to="/novadenuncias">Nova</Link>
+            <Link to="/departamentos">Departamentos</Link>
+            <Link to="/usuarios">Usuários</Link>
+            <button onClick={handleLogout} className="btn-logout">Sair</button>
+          </nav>
+        ) : (
+          <nav>
+            <Link to="/login">Entrar</Link>
+          </nav>
+        )}
+      </div>
+    </header>
   );
 }
